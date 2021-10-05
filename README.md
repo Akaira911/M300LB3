@@ -1,5 +1,13 @@
 # M300LB3
 
+## Inhaltsverzeichnis
+1. [Beschreibung](#Beschreibung)
+2. [Docker Befehle](Docker Befehle)
+3. [Reflexion](Reflexion)
+
+
+
+## Beschreibung
 ### Vagrant
 Vagrant ist eine freie Ruby-Anwendung zum Erstellen und Verwalten virtueller Maschinen. Vagrant ermöglicht einfache Softwareverteilung (englisch Deployment) insbesondere in der Software- und Webentwicklung und dient als Wrapper zwischen Virtualisierungssoftware wie VirtualBox, KVM/QEMU, VMware und Hyper-V und Software-Configuration-Management-Anwendungen beziehungsweise Systemkonfigurationswerkzeugen wie Chef, Saltstack und Puppet.
 ### Visual Studio Code
@@ -14,7 +22,7 @@ Bash (auch BASH oder bash), die Bourne-again shell, ist eine freie Unix-Shell un
 Bash ist elementarer Bestandteil des unixähnlichen Betriebssystems GNU und gehört zum GNU-Projekt. Auch bei den meisten auf GNU/Linux aufbauenden Betriebssystemen ist Bash die voreingestellte Shell. Darüber hinaus war Bash 3.x von 2003 bis 2019 die voreingestellte Shell in macOS von Apple (10.3–10.14) – wurde allerdings aus lizenzrechtlichen Gründen nie auf Version 4.0 oder höher aktualisiert. 
 Der Name Bash ist im Englischen mehrdeutig ([to] bash, [the] bash) und erfuhr im Laufe der Zeit weitere, meist humoristische Bedeutungen.
 
-### Docker-Befehle
+### Docker Befehle
 ```
 attach	Attach local standard input, output, and error streams to a running container
 build	Build an image from a Dockerfile
@@ -57,3 +65,5 @@ update	Update configuration of one or more containers
 version	Show the Docker version information
 wait	Block until one or more containers stop, then print their exit codes
 ```
+### Reflexion
+Der Anfang war schwer für uns. Wir wussten zwar was unser Auftrag war, jedoch nciht wie man dies umsetzen muss. Deshalb entschieden wir uns, dies mit Frau Schmid zu besprechen. Frau Schmid erweis sich als Hilfreich und erklärte uns wie wir vorgehen mussten. Nach einigen Disukusionen mit ihr, begriffen wir endlich was wir machen müssen und konnten so weiter arbeiten. Hin und wieder Halfen wir auch FRau Schmid, da wir ohne ihre Hilfe nich weit gekommen wären. Wir kammen dannach schnell vorwärts, da wir auch die Hilfe des Internets hatten. 
