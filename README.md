@@ -41,7 +41,7 @@ info	Display system-wide informatio
 load	Load an image from a tar archive or STDIN
 login	Log in to a Docker registry
 logout	Log out from a Docker registry
-logs	Fetch the logs of a container
+logs	Fetch the logs of a container 
 pause	Pause all processes within one or more containers
 ps	List containers
 pull	Pull an image or a repository from a registry
