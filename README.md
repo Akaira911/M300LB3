@@ -59,6 +59,169 @@ update	Update configuration of one or more containers
 version	Show the Docker version information
 wait	Block until one or more containers stop, then print their exit codes
 ```
+### Erste Erfahrungen
+--------------------------
+Wir haben damit angefangen via Vagrantfile eine Linux VM aufzusetzen. Nach der Installation haben wir Linux geupdatet:
+```
+apt-get update
+```
+Wir haben dann nach Angaben docker.io installiert, um die Dockerbefehle auszuführen.
+Dies geht mit folgendem befehl: 
+```
+sudo apt-get install -y docker.io
+```
+Später haben wir uns von Herrn Berrnet inspirieren lassen und versucht eine Einfache Website zu kreieren. Dies half uns erste erfahrungen mit Docker zu machen. 
+```
+From Ubuntu
+MAINTAINER Micael Insua <micael.insua@edu.tbz.ch>
+Run apt-get update
+CMD ["echo", "Hello World"]
+```
+Die erste Zeile des Codes hollt sich ein Ubuntu Image von docker.com. 
+
+Nachdem das Dockerfile geschrieben war haben wir den Docker aufgebaut und gestartet. 
+Dies geht mit folgdenem Code: 
+```
+sudo docker build -t myimage
+sudo docker run myimage
+```
+###Projekt
+------------------
+Wir haben versucht eine Web Application Stack mit Docker Container zu erstellen, dieser besteht aus Apache, MySQL, PHP und PhpMyAdmin. Wir haben uns entschieden die Services auf einen eigenen Container laufen zu lassen, da es in der Wirklichkeit von grösserem Nutzen ist. So ist der Stack einfach mit weiteren Diensten erweiterbar. So kann MySQL mit einer anderen SQL Anwendung ausgetauscht werden.
+Ich habe mich im Verlauf vom Projekt dazu entschieden das image aus bitnami zu nehemen, da mein Geschäft damit arbeitet und mir bei diesem Projekt als hilfestellung diente.
+
+Für Unser Projekt haben wir eine grosse und spezifische Verzeichnisstruktur erstellt: 
+```
+dstack
+  docker
+    apache
+      certs
+      my_vhost.conf
+    mysql
+      data
+    php
+    www
+    docker-compose.yml
+```
+Die gleiche Ordnerstruktur ist oben zu finden. 
+
+Alle Contaienr werden mit Docker Compose gestartet, deshalb haben wir zuerst damit angefangen. Die Datei docker-compose.yml ist unter dstack > docker zu finden. 
+```
+version: "3"
+
+# --- MYSQL
+services:
+  mysql:
+    container_name: "dstack-mysql"
+    image: bitnami/mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=Dasistkeinpassw0rt
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=Dasistkeinpassw0rt
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./docker/mysql/data:/bitnami/mysql/data
+
+  # --- PHP 7.4
+  #
+  php:
+    container_name: "dstack-php"
+    image: bitnami/php-fpm:7.4
+    depends_on:
+      - redis
+    volumes:
+      - ./docker/www:/app:delegated
+      - ./docker/php/php.ini:/opt/bitnami/php/etc/conf.d/php.ini:ro
+
+  # --- Apache 2.4
+  #
+  apache:
+    container_name: "dstack-apache"
+    image: bitnami/apache:2.4
+    ports:
+      - '80:8080'
+      - '443:8443'
+    depends_on:
+      - php
+    volumes:
+      - ./docker/www:/app:delegated
+      - ./docker/apache/my_vhost.conf:/vhosts/myapp.conf:ro
+      - ./docker/apache/certs:/certs
+
+  redis:
+    container_name: "dstack-redis"
+    image: bitnami/redis:6.0
+    environment:
+      - REDIS_PASSWORD=Dasistkeinpassw0rt
+
+  # --- PhpMyAdmin
+  # http://127.0.0.1:81 oder https://127.0.0.1:8143
+  # Login mit user root und gesetztes MYSQL_PASSWORD.
+  phpmyadmin:
+    container_name: "dstack-phpmyadmin"
+    image: bitnami/phpmyadmin:latest
+    depends_on:
+      - mysql
+    ports:
+      - '81:8080'
+      - '8143:8443'
+    environment:
+      - DATABASE_HOST=host.docker.internal
+
+volumes:
+  dstack-mysql:
+    driver: local
+```
+Ausser PhpMyAdmin benutzen alle Dienste ihre Standard-Ports. Alle wichtigen Daten werden in Volumes ausserhalb der Container gespeichert.
+
+## Apache
+------------------
+Bevor wir mit der Configfile von Apache anfangen konnten mussten wir mit folgendem Code zuerst ein selbst signiertes SSL-Zertifikat generieren und im Ordner ./docker/apache/certs abspeichern: 
+```
+openssl req -x509 -newkey rsa:4096 -sha256 -nodes -keyout server.key -out server.crt -subj "/CN=dstack.local" -days 3650
+```
+Im vorhinein wird die Apache-Konfiguration im Ordner apache abgelegt. 
+Die Datei sieht nun folgendermassen aus:
+```
+<VirtualHost *:8080>
+  DocumentRoot "/app"
+  ProxyPassMatch ^/(.*\.php(/.*)?)$ fcgi://php:9000/app/$1
+  <Directory "/app">
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+    DirectoryIndex index.html index.php
+  </Directory>
+</VirtualHost>
+
+<VirtualHost *:8443>
+  SSLEngine on  
+  SSLCipherSuite ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP:+eNULL  
+  SSLCertificateFile "/certs/server.crt"  
+  SSLCertificateKeyFile "/certs/server.key"  
+  DocumentRoot "/app"
+  ProxyPassMatch ^/(.*\.php(/.*)?)$ fcgi://php:9000/app/$1
+  <Directory "/app">
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+    DirectoryIndex index.html index.php
+  </Directory>
+</VirtualHost>
+```
+Um die DAten der Website abzuspeichern erstellen wir noch den Ordner www, welcher in der oberen Hirarchie ersichtlich ist. Für unseren Zweck, reicht die Datei info.php mit folgendem Inhalt:
+```
+<?php
+phpinfo();
+?>
+```
+##MySQL
+------------------
+
+
+    
+
 ### Reflexion
 -------------------
 Der Anfang war schwer für uns. Wir wussten zwar was unser Auftrag war, jedoch nciht wie man dies umsetzen muss. Deshalb entschieden wir uns, dies mit Frau Schmid zu besprechen. Frau Schmid erweis sich als Hilfreich und erklärte uns wie wir vorgehen mussten. Nach einigen Disukusionen mit ihr, begriffen wir endlich was wir machen müssen und konnten so weiter arbeiten. Hin und wieder Halfen wir auch FRau Schmid, da wir ohne ihre Hilfe nich weit gekommen wären. Wir kammen dannach schnell vorwärts, da wir auch die Hilfe des Internets hatten. 
