@@ -59,7 +59,7 @@ update	Update configuration of one or more containers
 version	Show the Docker version information
 wait	Block until one or more containers stop, then print their exit codes
 ```
-### Reflexion Ellavan
+### Reflexion
 -------------------
 Der Anfang war schwer für uns. Wir wussten zwar was unser Auftrag war, jedoch nciht wie man dies umsetzen muss. Deshalb entschieden wir uns, dies mit Frau Schmid zu besprechen. Frau Schmid erweis sich als Hilfreich und erklärte uns wie wir vorgehen mussten. Nach einigen Disukusionen mit ihr, begriffen wir endlich was wir machen müssen und konnten so weiter arbeiten. Hin und wieder Halfen wir auch FRau Schmid, da wir ohne ihre Hilfe nich weit gekommen wären. Wir kammen dannach schnell vorwärts, da wir auch die Hilfe des Internets hatten. 
 Ich selbst konnte die Dokumentation erstellen. Es war keine grosse Arbeit doch verbrachte ich viel Zeit mit dem, da ich noch nie mit Github eine Dokumentation erstellen musste. Die war für mich eine Herausforderung, da ich vieles nach Googeln musste. Aber hingekrigt haben wir es dennoch. 
