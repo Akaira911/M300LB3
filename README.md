@@ -24,7 +24,6 @@ Bash ist elementarer Bestandteil des unixÃ¤hnlichen Betriebssystems GNU und gehÃ
 Der Name Bash ist im Englischen mehrdeutig ([to] bash, [the] bash) und erfuhr im Laufe der Zeit weitere, meist humoristische Bedeutungen.
 
 ### Docker Befehle
-
 -------------------
 ```
 attach Attach local standard input, output, and error streams to a running container
