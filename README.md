@@ -2,12 +2,12 @@
 
 ## Inhaltsverzeichnis
 1. [Beschreibung](Beschreibung)
-2. [Docker Befehle](Docker Befehle)
+2. [DockerBefehle](DockerBefehle)
 3. [Reflexion](Reflexion)
 4. [Projekt](Projekt)
 5. [Apache](Apache)
 6. [MySQL](MySQL)
-7. [Frontend / Backend](Frontend / Backend)
+7. [Frontend/Backend](Frontend/Backend)
 
 
 
