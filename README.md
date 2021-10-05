@@ -4,6 +4,10 @@
 1. [Beschreibung](#Beschreibung)
 2. [Docker Befehle](Docker Befehle)
 3. [Reflexion](Reflexion)
+4. Projekt
+5. Apache
+6. MySQL
+7. Frontend / Backend
 
 
 
@@ -84,7 +88,7 @@ Dies geht mit folgdenem Code:
 sudo docker build -t myimage
 sudo docker run myimage
 ```
-###Projekt
+### Projekt
 ------------------
 Wir haben versucht eine Web Application Stack mit Docker Container zu erstellen, dieser besteht aus Apache, MySQL, PHP und PhpMyAdmin. Wir haben uns entschieden die Services auf einen eigenen Container laufen zu lassen, da es in der Wirklichkeit von grösserem Nutzen ist. So ist der Stack einfach mit weiteren Diensten erweiterbar. So kann MySQL mit einer anderen SQL Anwendung ausgetauscht werden.
 Ich habe mich im Verlauf vom Projekt dazu entschieden das image aus bitnami zu nehemen, da mein Geschäft damit arbeitet und mir bei diesem Projekt als hilfestellung diente.
@@ -108,7 +112,7 @@ Alle Contaienr werden mit Docker Compose gestartet, deshalb haben wir zuerst dam
 ```
 version: "3"
 
-# --- MYSQL
+### MYSQL
 services:
   mysql:
     container_name: "dstack-mysql"
@@ -174,7 +178,7 @@ volumes:
 ```
 Ausser PhpMyAdmin benutzen alle Dienste ihre Standard-Ports. Alle wichtigen Daten werden in Volumes ausserhalb der Container gespeichert.
 
-## Apache
+### Apache
 ------------------
 Bevor wir mit der Configfile von Apache anfangen konnten mussten wir mit folgendem Code zuerst ein selbst signiertes SSL-Zertifikat generieren und im Ordner ./docker/apache/certs abspeichern: 
 ```
@@ -215,7 +219,7 @@ Um die DAten der Website abzuspeichern erstellen wir noch den Ordner www, welche
 phpinfo();
 ?>
 ```
-##MySQL
+### MySQL
 ------------------
 
 
