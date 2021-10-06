@@ -26,6 +26,9 @@ Als Gastsystem können wiederum x86- bzw. x64-Betriebssysteme eingesetzt werden.
 Bash (auch BASH oder bash), die Bourne-again shell, ist eine freie Unix-Shell unter GPL. Als Shell ist Bash eine Mensch-Maschine-Schnittstelle, die eine Umgebung (englisch environment) bereitstellt, in den zeilenweisen Texteingaben und -ausgaben möglich sind. Letzteres erfolgt über die Befehlszeile, in die Befehle eingetippt und durch Betätigen der Eingabetaste eingegeben werden. 
 Bash ist elementarer Bestandteil des unixähnlichen Betriebssystems GNU und gehört zum GNU-Projekt. Auch bei den meisten auf GNU/Linux aufbauenden Betriebssystemen ist Bash die voreingestellte Shell. Darüber hinaus war Bash 3.x von 2003 bis 2019 die voreingestellte Shell in macOS von Apple (10.3–10.14) – wurde allerdings aus lizenzrechtlichen Gründen nie auf Version 4.0 oder höher aktualisiert. 
 Der Name Bash ist im Englischen mehrdeutig ([to] bash, [the] bash) und erfuhr im Laufe der Zeit weitere, meist humoristische Bedeutungen.
+### Docker
+Docker ist eine Freie Software zur Isolierung von Anwendungen mit Hilfe von Containervirtualisierung.
+Docker vereinfacht die Bereitstellung von Anwendungen, weil sich Container, die alle nötigen Pakete enthalten, leicht als Dateien transportieren und installieren lassen. Container gewährleisten die Trennung und Verwaltung der auf einem Rechner genutzten Ressourcen. Das beinhaltet laut Aussage der Entwickler: Code, Laufzeitmodul, Systemwerkzeuge, Systembibliotheken – alles was auf einem Rechner installiert werden kann.
 
 ### Docker Befehle
 -------------------
@@ -221,13 +224,49 @@ phpinfo();
 ```
 ### MySQL
 ------------------
+Für MySQL haben wir im vorhinein den Ordner data erstellt, welcher nach dem Start des Containers alle von MySQL erzeugten Daten erhaltet.
 
+### PHP
+---------
+Für die PHP Konfiguration, haben wir folgende Datei erstellt. 
+```
+display_errors = On
+expose_php = off
+max_execution_time = 360
+max_input_time = 360
+memory_limit = 256M
+upload_max_filesize = 1G
+post_max_size = 1G
+opcache.enable = 1
+opcache.revalidate_freq = 2
+opcache.validate_timestamps = 1
+opcache.interned_strings_buffer = 32
+opcache.memory_consumption = 256
+extension=imagick.so
+zend_extension = "/opt/bitnami/php/lib/php/extensions/xdebug.so"
+[Xdebug]
+xdebug.=1
+xdebug.remote_enable=1
+xdebug.default_enable=0
+xdebug.remote_host=host.docker.internal
+xdebug.remote_port=9000
+xdebug.remote_connect_back=0
+xdebug.profiler_enable=0
+xdebug.remote_log="/tmp/xdebug.log"
+```
+Hier wird die ImageMagick extension aktiviert und zusätzlich noch XDebug konfiguriert.
 
+### Container starten
+----------------------
+Um alle Container zu starten, muss man in den Ordner, wo sich die docker-compose.yml Datei befindet. In Unserem Falle ist das unter dstack > docker zu finden. Nachdem man mit cd auf das Verzeichnis gewechselt hat muss man folgenden befehl eingeben:
+```
+docker-compose up -d
+```
+Wenn man alles richtig konfiguriert hat, kann man im Webbrowser seine Arbeit testen. Dies tut man indem man auf die localhost Adresse zugreift (http://127.0.0.1/) und dann sollte folgendes erscheinen.
 
 ### Frontend / Backend
 ----------------------
 ![image](https://user-images.githubusercontent.com/74959608/136082247-cb280c90-4259-43cc-849e-17003bd9d175.png)
-
 
 ### Reflexion
 -------------------
