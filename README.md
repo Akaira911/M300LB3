@@ -268,7 +268,15 @@ Wenn man alles richtig konfiguriert hat, kann man im Webbrowser seine Arbeit tes
 ----------------------
 ![image](https://user-images.githubusercontent.com/74959608/136082247-cb280c90-4259-43cc-849e-17003bd9d175.png)
 
-### Reflexion
--------------------
-Der Anfang war schwer für uns. Wir wussten zwar was unser Auftrag war, jedoch nciht wie man dies umsetzen muss. Deshalb entschieden wir uns, dies mit Frau Schmid zu besprechen. Frau Schmid erweis sich als Hilfreich und erklärte uns wie wir vorgehen mussten. Nach einigen Disukusionen mit ihr, begriffen wir endlich was wir machen müssen und konnten so weiter arbeiten. Hin und wieder Halfen wir auch FRau Schmid, da wir ohne ihre Hilfe nich weit gekommen wären. Wir kammen dannach schnell vorwärts, da wir auch die Hilfe des Internets hatten. 
+### Reflexion Ellavan
+----------------------
+Der Anfang war schwer für uns. Wir wussten zwar was unser Auftrag war, jedoch nciht wie man dies umsetzen muss. Deshalb entschieden wir uns, dies mit Frau Schmid zu besprechen. Frau Schmid erweis sich als Hilfreich und erklärte uns wie wir vorgehen mussten. Nach einigen Disukusionen mit ihr, begriffen wir endlich was wir machen müssen und konnten so weiter arbeiten. Hin und wieder Halfen wir auch Frau Schmid, da wir ohne ihre Hilfe nich weit gekommen wären. Wir kammen dannach schnell vorwärts, da wir auch die Hilfe des Internets hatten. 
 Ich selbst konnte die Dokumentation erstellen. Es war keine grosse Arbeit doch verbrachte ich viel Zeit mit dem, da ich noch nie mit Github eine Dokumentation erstellen musste. Die war für mich eine Herausforderung, da ich vieles nach Googeln musste. Aber hingekrigt haben wir es dennoch. 
+
+### Reflexion Micael
+---------------------
+Das Projekt empfand ich als schwerer als das Vagrant Projekt. Auch hier hatten wir einen schweren Start, da ich auch nach 3 stündiger Grübelei immer noch nicht verstand wie ich mit so einem dockerfile umgehen muss und wo ich die Dateein ausführen muss. Erst nachdem wir uns mit Frau Schmid zusammensetzten, konnten wir richtig anfangen. Dank ihr verstanden wir auch erst, dass alles auf einer Linux VM gemacht werden muss und nicht auf Bash, dies könnte aber auch uns zu verschulden sein. Bis auf diesen schlechten Start, konnten wir uns dennoch aufrapeln und das Projekt Zeitgemäss beenden. Dies konnten wir nur durch gute Zusammenarbeit erreichen, ich und Herr Pakeerathan haben uns jeweils alles aufgeteilt, so kümmerte ich mich um die Dockerfiles und Herr Pakeerathan um die Dokumentation. 
+Es war für mich auch etwas furchteregend als ich sah, dass wir unsere Dokumentation auf Github machen müssen, da ich bis jetzt noch keine Erfahrung mit dieser Platform hatte. Trotzdessen konnte ich mich gut einarbeiten aber dies war auch nicht all zu schwer. 
+
+Es war meine erste Erfahrung mit Docker, weshalb ich mich anfangs an das Internet wandte aber wie erwähnt führte dies nicht direkt zu Resultaten. Ich bekamm meine meiste Hilfe von meinem Betrieb, da die schon bereits damit zu tun hatten, der einzige Unterschied war die verwendete Datenbank, dies sah ich aber nicht als zu gravierend und lies mich drauf ein.
+Insgesamt war das Projekt eine gute Erfahrung für mich, dass einzige was anzumerken ist, ist dass wir für mein gefühl zu wenig Zeit für dieses Projekt hatten. Für das Thema Vagrantfile hatten wir einen gesamten Tag mehr, obwohl ich dieses Thema als wengier schwer empfand. Ich hätte mich darüber gefreut, wenn die Abgabetermine umgekehrt währen, also dass wir für Vagrant eine und für Docker zwei Wochen haben. 
