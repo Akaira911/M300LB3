@@ -264,6 +264,7 @@ Um alle Container zu starten, muss man in den Ordner, wo sich die docker-compose
 docker-compose up -d
 ```
 Wenn man alles richtig konfiguriert hat, kann man im Webbrowser seine Arbeit testen. Dies tut man indem man auf die localhost Adresse zugreift (http://127.0.0.1/) und dann sollte folgendes erscheinen.
+![Unbenannt](https://user-images.githubusercontent.com/74959608/136148973-c617cc05-7cae-4021-bdee-66aadae87a91.PNG)
 
 ### Frontend / Backend
 ----------------------
