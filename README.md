@@ -2,19 +2,19 @@
 
 ## Inhaltsverzeichnis
 1. [Beschreibung](#Beschreibung)
-2. [DockerBefehle](#Docker-Befehle)
-3. [ErsteErfahrungen](#Erste-Erfahrungen)
+2. [Docker Befehle](#Docker-Befehle)
+3. [Erste Erfahrungen](#Erste-Erfahrungen)
 4. [Projekt](#Projekt)
 5. [Apache](#Apache)
 6. [MySQL](#MySQL)
 7. [PHP](#PHP)
-8. [Containerstarten](#Container-starten)
+8. [Container starten](#Container-starten)
 
 9. [Frontend/Backend](#Frontend-Backend)
 
-10. [ReflexionEllavan](Reflexion-Ellavan)
+10. [Reflexion Ellavan](Reflexion-Ellavan)
 
-11. [ReflexionMicael](Reflexion-Micael)
+11. [Reflexion Micael](Reflexion-Micael)
 
 
 
