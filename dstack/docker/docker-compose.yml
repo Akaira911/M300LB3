@@ -1,0 +1,65 @@
+version: "3"
+
+# --- MYSQL
+services:
+  mysql:
+    container_name: "dstack-mysql"
+    image: bitnami/mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=Dasistkeinpassw0rt
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=Dasistkeinpassw0rt
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./docker/mysql/data:/bitnami/mysql/data
+
+  # --- PHP 7.4
+  #
+  php:
+    container_name: "dstack-php"
+    image: bitnami/php-fpm:7.4
+    depends_on:
+      - redis
+    volumes:
+      - ./docker/www:/app:delegated
+      - ./docker/php/php.ini:/opt/bitnami/php/etc/conf.d/php.ini:ro
+
+  # --- Apache 2.4
+  #
+  apache:
+    container_name: "dstack-apache"
+    image: bitnami/apache:2.4
+    ports:
+      - '80:8080'
+      - '443:8443'
+    depends_on:
+      - php
+    volumes:
+      - ./docker/www:/app:delegated
+      - ./docker/apache/my_vhost.conf:/vhosts/myapp.conf:ro
+      - ./docker/apache/certs:/certs
+
+  redis:
+    container_name: "dstack-redis"
+    image: bitnami/redis:6.0
+    environment:
+      - REDIS_PASSWORD=Dasistkeinpassw0rt
+
+  # --- PhpMyAdmin
+  # http://127.0.0.1:81 oder https://127.0.0.1:8143
+  # Login mit user root und gesetztes MYSQL_PASSWORD.
+  phpmyadmin:
+    container_name: "dstack-phpmyadmin"
+    image: bitnami/phpmyadmin:latest
+    depends_on:
+      - mysql
+    ports:
+      - '81:8080'
+      - '8143:8443'
+    environment:
+      - DATABASE_HOST=host.docker.internal
+
+volumes:
+  dstack-mysql:
+    driver: local
